@@ -30,18 +30,19 @@
   <div id="map"></div>
   <script>
       var map = L.map('map').setView([35.9045, -79.0462], 14.0);
-
+	
+	var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	    maxZoom: 19,
+	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+	  
       var Photo = L.tileLayer('/NewTile/{z}/{x}/{y}.png', {
         minZoom: 12,
         maxZoom: 16,
         tms: false,
         attribution: 'USGS'
       })
-      var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	    maxZoom: 19,
-	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-	  
+        
       var Marker = L.marker ([35.9045, -79.0462]).addTo(map)
           .bindPopup('Morrison Dorm: I lived here as a sophomore')
           .openPopup();
